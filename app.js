@@ -49,7 +49,7 @@ app.get('/api/karyawan', (req, res) => {
 });
 
 // Endpoint GET untuk menampilkan karyawan yang sedang login
-app.get('/api/karyawan', checkLogin, (req, res) => {
+app.get('/api/missing_karyawan', checkLogin, (req, res) => {
   if (req.loggedIn) {
     // Implementasi sesuai kebutuhan untuk menampilkan karyawan yang sedang login
     res.json({ user: 'nunungs' });
