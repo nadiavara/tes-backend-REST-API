@@ -49,7 +49,7 @@ app.get('/api/karyawan', (req, res) => {
 });
 
 // Endpoint GET untuk menampilkan karyawan yang sedang login
-app.get('/api/missing_karyawan', checkLogin, (req, res) => {
+app.get('/api/login_karyawan', checkLogin, (req, res) => {
   if (req.loggedIn) {
     // Implementasi sesuai kebutuhan untuk menampilkan karyawan yang sedang login
     res.json({ user: 'nunungs' });
@@ -59,33 +59,33 @@ app.get('/api/missing_karyawan', checkLogin, (req, res) => {
 });
 
 // Endpoint GET untuk menampilkan karyawan yang tidak ada pada tabel user
-app.get('/api/user_name', (req, res) => {
+app.get('/api/missing_karyawan', (req, res) => {
   const sql = 'SELECT * FROM karyawan WHERE id NOT IN (SELECT id FROM user)';
   connection.query(sql, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     } else {
-      res.json({ missingUsers: results });
+      res.json({ missing_karyawan: results });
     }
   });
 });
 
 // Endpoint GET untuk menampilkan data karyawan pada Unit beserta salarynya
-app.get('/api/karyawan-unit', (req, res) => {
+app.get('/api/karyawan_unit', (req, res) => {
   const sql = 'SELECT * FROM karyawan WHERE nama_unit = "HR"';
   connection.query(sql, (error, results) => {
     if (error) {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     } else {
-      res.json({ hrEmployees: results });
+      res.json({karyawan_unit: results });
     }
   });
 });
 
 // Endpoint POST untuk menambahkan karyawan unit kerja
-app.post('/api/add-karyawan', (req, res) => {
+app.post('/api/add_karyawan', (req, res) => {
   const { nama_karyawan, nama_unit, salary } = req.body;
   const sql = 'INSERT INTO karyawan (nama_karyawan, nama_unit, salary) VALUES (?, ?, ?)';
   connection.query(sql, [nama_karyawan, nama_unit, salary], (error, result) => {
@@ -93,7 +93,7 @@ app.post('/api/add-karyawan', (req, res) => {
       console.error('Error executing query:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     } else {
-      res.json({ success: true, message: 'Karyawan berhasil ditambahkan', newEmployeeId: result.insertId });
+      res.json({ success: true, message: 'Karyawan berhasil ditambahkan', add_karyawanId: result.insertId });
     }
   });
 });
