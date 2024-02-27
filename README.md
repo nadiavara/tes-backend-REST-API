@@ -1,4 +1,4 @@
-Berikut adalah langkah-langkah untuk membuat REST API menggunakan Node.js dan Express sesuai dengan kebutuhan yang Anda jelaskan:
+Berikut adalah langkah-langkah untuk membuat REST API menggunakan Node.js dan Express:
 
 ### Langkah 1: Persiapkan Lingkungan Pengembangan
 
